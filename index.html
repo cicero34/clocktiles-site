@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>ClockTiles — The 5-Minute Word Game That Learns Your Level</title>
-<meta name="description" content="Build a crossword from today's tiles before the clock runs out. Five minutes, never more — against a Bot that re-tunes to your level. Free daily puzzle.">
+<meta name="description" content="Build a crossword from today's tiles before the clock runs out. Five minutes, never more — against a Bot that adapts to your level. Free daily puzzle.">
 <link rel="canonical" href="https://clocktiles.com/">
 <link rel="icon" type="image/png" href="/icon.png">
 <link rel="apple-touch-icon" href="/icon.png">
@@ -12,7 +12,7 @@
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://clocktiles.com/">
 <meta property="og:title" content="The five-minute word game that learns how you play">
-<meta property="og:description" content="Same tiles as everyone. A clock that never runs past five minutes. A Bot that meets you at your level.">
+<meta property="og:description" content="Same tiles as everyone. A clock that never runs past five minutes. A Bot that adapts to your level.">
 <meta property="og:image" content="https://clocktiles.com/icon.png">
 <meta name="twitter:card" content="summary">
 
@@ -46,13 +46,13 @@
   /* ---- hero ---- */
   .hero{
     position:relative;
-    min-height:100svh;
     display:flex;
     align-items:center;
     justify-content:center;
     overflow:hidden;
     color:#fff;
     text-align:center;
+    padding:56px 24px 48px;
   }
   .hero-bg{
     position:absolute;
@@ -65,13 +65,12 @@
     position:absolute;
     inset:0;
     z-index:1;
-    background:radial-gradient(60% 50% at 50% 38%, rgba(15,22,40,0.35) 0%, rgba(15,22,40,0.05) 60%, rgba(15,22,40,0) 100%);
+    background:linear-gradient(180deg, rgba(15,22,40,0.32) 0%, rgba(15,22,40,0.18) 45%, rgba(15,22,40,0.42) 100%);
   }
   .hero-content{
     position:relative;
     z-index:2;
     max-width:640px;
-    padding:0 24px;
   }
   .hero h1{
     font-size:clamp(1.9rem, 5vw, 3rem);
@@ -79,11 +78,11 @@
     text-shadow:0 2px 18px rgba(10,16,30,0.55);
   }
   .hero .lede{
-    font-size:clamp(1rem, 2.2vw, 1.2rem);
+    font-size:clamp(1.1rem, 2.4vw, 1.3rem);
     line-height:1.55;
     color:#EDF1F8;
     text-shadow:0 1px 10px rgba(10,16,30,0.5);
-    max-width:520px;
+    max-width:540px;
     margin-left:auto;
     margin-right:auto;
   }
@@ -102,6 +101,7 @@
     box-shadow:0 10px 24px -10px rgba(198,134,47,0.85);
     letter-spacing:.01em;
     transition:transform .15s ease;
+    white-space:nowrap;
   }
   .cta:hover{transform:translateY(-1px);}
   .hero .fine{
@@ -113,9 +113,25 @@
     text-shadow:0 1px 6px rgba(10,16,30,0.5);
   }
 
+  /* ---- gameplay screenshot ---- */
+  .hero-shot{
+    margin:32px auto 0;
+    max-width:340px;
+    padding:10px;
+    background:#fff;
+    border-radius:20px;
+    box-shadow:0 24px 48px -18px rgba(8,14,28,0.55), 0 2px 0 rgba(255,255,255,0.06) inset;
+  }
+  .hero-shot img{
+    display:block;
+    width:100%;
+    height:auto;
+    border-radius:13px;
+  }
+
   /* ---- body sections ---- */
   section.copy{
-    padding:72px 0;
+    padding:50px 0;
     border-bottom:1px solid var(--parchment-line);
   }
   section.copy:nth-of-type(even){ background:var(--studio); }
@@ -124,7 +140,7 @@
     color:var(--ink);
   }
   section.copy p{
-    font-size:1.05rem;
+    font-size:1.18rem;
     line-height:1.65;
     color:var(--slate);
   }
@@ -132,7 +148,7 @@
   /* ---- final CTA band ---- */
   .final-cta{
     position:relative;
-    padding:88px 0;
+    padding:62px 0;
     text-align:center;
     color:#fff;
     background:linear-gradient(180deg,#1B2A4A 0%, #2C3C5C 100%);
@@ -140,7 +156,7 @@
   .final-cta h2{
     color:#fff;
     font-size:clamp(1.5rem, 3.6vw, 2.1rem);
-    margin-bottom:28px;
+    margin-bottom:26px;
   }
 
   footer{
@@ -179,31 +195,34 @@
   <div class="hero-scrim"></div>
   <div class="hero-content">
     <h1>The five-minute word game that learns how you play</h1>
-    <p class="lede">Build a crossword from today's tiles before the clock runs out &mdash; against a Bot that re-tunes to your level every day you play.</p>
-    <a class="cta" href="#">Download on the App Store</a>
+    <p class="lede">Build a crossword from today's tiles before the clock runs out &mdash; against a Bot that adapts to your level as you play.</p>
+    <a class="cta" href="#">Download ClockTiles on the App Store</a>
     <p class="fine">Free daily puzzle &middot; iPhone</p>
+    <div class="hero-shot">
+      <img src="/gameplay.png" alt="ClockTiles gameplay: a crossword-style board of drawn letter tiles, built outward from the anchor word with several intersecting words">
+    </div>
   </div>
 </section>
 
 <section class="copy">
   <div class="container">
     <h2>A fast daily word puzzle &mdash; five minutes, never more</h2>
-    <p>Drag your tiles onto the board and build words off the centre word, crossword-style. Every real word you make deals you fresh tiles, so your board keeps growing while the timer drains.</p>
-    <p>When the bar empties, you're done. Finished early? Tap <strong>I'm done</strong> and see your score. It fits a coffee, a train stop, a queue at the bank &mdash; a word game that respects your time.</p>
+    <p>Drag your tiles onto the board and build words off the centre word, crossword-style. Every valid word you make deals you fresh tiles, so your board keeps growing while the clock runs down.</p>
+    <p>It fits a coffee, a train ride or a spare five minutes &mdash; a word game that respects your time.</p>
   </div>
 </section>
 
 <section class="copy">
   <div class="container">
     <h2>A Bot that meets you where you are</h2>
-    <p>After a few days, your Bot settles close to your own level. No difficulty menu to guess at. Just play, and the game finds your level.</p>
+    <p>Your daily Bot automatically adjusts to your level as you play. No difficulty setting to guess at &mdash; just play, and the game finds your level.</p>
   </div>
 </section>
 
 <section class="copy">
   <div class="container">
-    <h2>Race real AI opponents with ClockTiles+</h2>
-    <p>Want more than one game a day? Subscribe to take on one, two or three AI opponents at the difficulty level you choose.</p>
+    <h2>Take on more Bots with ClockTiles+</h2>
+    <p>Play beyond the free daily puzzle. Take on one, two or three Bots and choose the difficulty level yourself.</p>
   </div>
 </section>
 
