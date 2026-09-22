@@ -3,29 +3,224 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>ClockTiles</title>
+<title>ClockTiles — The 5-Minute Word Game That Learns Your Level</title>
+<meta name="description" content="Build a crossword from today's tiles before the clock runs out. Five minutes, never more — against a Bot that re-tunes to your level. Free daily puzzle.">
+<link rel="canonical" href="https://clocktiles.com/">
+<link rel="icon" type="image/png" href="/icon.png">
+<link rel="apple-touch-icon" href="/icon.png">
+
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://clocktiles.com/">
+<meta property="og:title" content="The five-minute word game that learns how you play">
+<meta property="og:description" content="Same tiles as everyone. A clock that never runs past five minutes. A Bot that meets you at your level.">
+<meta property="og:image" content="https://clocktiles.com/icon.png">
+<meta name="twitter:card" content="summary">
+
 <style>
-  body {
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
-    max-width: 600px;
-    margin: 4rem auto;
-    padding: 0 1.25rem;
-    text-align: center;
-    color: #1c1c1e;
+  :root{
+    --ink:#1B2A4A;
+    --slate:#3E5573;
+    --mist:#EEF2F6;
+    --gold:#E4A94F;
+    --gold-deep:#C6862F;
+    --parchment:#F5EFE1;
+    --parchment-line:#E3D6BC;
+    --text-dim:#8A93A5;
+    --studio:#E9ECF0;
+    --studio-2:#DDE1E8;
   }
-  h1 { font-size: 2rem; margin-bottom: 0.5rem; }
-  p { color: #555; }
-  a { color: #0a6cff; }
-  @media (prefers-color-scheme: dark) {
-    body { color: #e6e6e6; background: #121212; }
-    p { color: #aaa; }
-    a { color: #6bb2ff; }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",system-ui,sans-serif;
+    color:var(--ink);
+    background:var(--mist);
+    -webkit-font-smoothing:antialiased;
   }
+  h1,h2{font-family:Georgia,"Iowan Old Style","Times New Roman",serif; margin:0 0 0.5em;}
+  p{margin:0 0 1em;}
+  a{color:inherit;}
+  .container{max-width:760px;margin:0 auto;padding:0 24px;}
+
+  /* ---- hero ---- */
+  .hero{
+    position:relative;
+    min-height:100svh;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    overflow:hidden;
+    color:#fff;
+    text-align:center;
+  }
+  .hero-bg{
+    position:absolute;
+    inset:0;
+    width:100%;
+    height:100%;
+    z-index:0;
+  }
+  .hero-scrim{
+    position:absolute;
+    inset:0;
+    z-index:1;
+    background:radial-gradient(60% 50% at 50% 38%, rgba(15,22,40,0.35) 0%, rgba(15,22,40,0.05) 60%, rgba(15,22,40,0) 100%);
+  }
+  .hero-content{
+    position:relative;
+    z-index:2;
+    max-width:640px;
+    padding:0 24px;
+  }
+  .hero h1{
+    font-size:clamp(1.9rem, 5vw, 3rem);
+    line-height:1.14;
+    text-shadow:0 2px 18px rgba(10,16,30,0.55);
+  }
+  .hero .lede{
+    font-size:clamp(1rem, 2.2vw, 1.2rem);
+    line-height:1.55;
+    color:#EDF1F8;
+    text-shadow:0 1px 10px rgba(10,16,30,0.5);
+    max-width:520px;
+    margin-left:auto;
+    margin-right:auto;
+  }
+  .cta{
+    display:inline-block;
+    margin-top:12px;
+    border:0;
+    cursor:pointer;
+    text-decoration:none;
+    font-size:1.02rem;
+    font-weight:700;
+    color:#fff;
+    padding:15px 30px;
+    border-radius:13px;
+    background:linear-gradient(180deg,#EBB65C 0%,var(--gold-deep) 100%);
+    box-shadow:0 10px 24px -10px rgba(198,134,47,0.85);
+    letter-spacing:.01em;
+    transition:transform .15s ease;
+  }
+  .cta:hover{transform:translateY(-1px);}
+  .hero .fine{
+    margin-top:16px;
+    margin-bottom:0;
+    font-size:.85rem;
+    letter-spacing:.04em;
+    color:#C9D3E4;
+    text-shadow:0 1px 6px rgba(10,16,30,0.5);
+  }
+
+  /* ---- body sections ---- */
+  section.copy{
+    padding:72px 0;
+    border-bottom:1px solid var(--parchment-line);
+  }
+  section.copy:nth-of-type(even){ background:var(--studio); }
+  section.copy h2{
+    font-size:clamp(1.5rem, 3.4vw, 2rem);
+    color:var(--ink);
+  }
+  section.copy p{
+    font-size:1.05rem;
+    line-height:1.65;
+    color:var(--slate);
+  }
+
+  /* ---- final CTA band ---- */
+  .final-cta{
+    position:relative;
+    padding:88px 0;
+    text-align:center;
+    color:#fff;
+    background:linear-gradient(180deg,#1B2A4A 0%, #2C3C5C 100%);
+  }
+  .final-cta h2{
+    color:#fff;
+    font-size:clamp(1.5rem, 3.6vw, 2.1rem);
+    margin-bottom:28px;
+  }
+
+  footer{
+    padding:32px 24px 48px;
+    text-align:center;
+    font-size:.82rem;
+    color:var(--text-dim);
+  }
+  footer a{ color:var(--slate); text-decoration:underline; }
+  footer .links{ margin-bottom:10px; }
+  footer .links a{ margin:0 10px; }
 </style>
 </head>
 <body>
-<h1>ClockTiles</h1>
-<p>A word puzzle game. The full site is coming soon.</p>
-<p><a href="/privacy/">Privacy Policy</a></p>
+
+<section class="hero">
+  <svg class="hero-bg" viewBox="0 0 390 720" preserveAspectRatio="xMidYMax slice" aria-hidden="true">
+    <defs>
+      <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0"   stop-color="#C9D3DF"/>
+        <stop offset="0.42" stop-color="#9EACC6"/>
+        <stop offset="0.74" stop-color="#D8B69A"/>
+        <stop offset="1"   stop-color="#E9C9A2"/>
+      </linearGradient>
+      <radialGradient id="glow" cx="0.5" cy="0.5" r="0.5">
+        <stop offset="0" stop-color="#FBE6BE" stop-opacity="0.95"/>
+        <stop offset="1" stop-color="#FBE6BE" stop-opacity="0"/>
+      </radialGradient>
+    </defs>
+    <rect x="0" y="0" width="390" height="720" fill="url(#sky)"/>
+    <path d="M0 300 L70 250 L140 292 L210 236 L280 286 L360 244 L390 268 L390 720 L0 720 Z" fill="#6E7FA0" opacity="0.55"/>
+    <path d="M0 360 L60 322 L150 372 L235 312 L320 366 L390 330 L390 720 L0 720 Z" fill="#47597C" opacity="0.8"/>
+    <path d="M0 470 L95 360 L150 420 L215 250 L250 330 L330 300 L390 372 L390 720 L0 720 Z" fill="#2C3C5C"/>
+    <ellipse cx="215" cy="250" rx="120" ry="70" fill="url(#glow)" opacity="0.5"/>
+  </svg>
+  <div class="hero-scrim"></div>
+  <div class="hero-content">
+    <h1>The five-minute word game that learns how you play</h1>
+    <p class="lede">Build a crossword from today's tiles before the clock runs out &mdash; against a Bot that re-tunes to your level every day you play.</p>
+    <a class="cta" href="#">Download on the App Store</a>
+    <p class="fine">Free daily puzzle &middot; iPhone</p>
+  </div>
+</section>
+
+<section class="copy">
+  <div class="container">
+    <h2>A fast daily word puzzle &mdash; five minutes, never more</h2>
+    <p>Drag your tiles onto the board and build words off the centre word, crossword-style. Every real word you make deals you fresh tiles, so your board keeps growing while the timer drains.</p>
+    <p>When the bar empties, you're done. Finished early? Tap <strong>I'm done</strong> and see your score. It fits a coffee, a train stop, a queue at the bank &mdash; a word game that respects your time.</p>
+  </div>
+</section>
+
+<section class="copy">
+  <div class="container">
+    <h2>A Bot that meets you where you are</h2>
+    <p>After a few days, your Bot settles close to your own level. No difficulty menu to guess at. Just play, and the game finds your level.</p>
+  </div>
+</section>
+
+<section class="copy">
+  <div class="container">
+    <h2>Race real AI opponents with ClockTiles+</h2>
+    <p>Want more than one game a day? Subscribe to take on one, two or three AI opponents at the difficulty level you choose.</p>
+  </div>
+</section>
+
+<section class="final-cta">
+  <div class="container">
+    <h2>Five minutes. One puzzle. A Bot at your level.</h2>
+    <a class="cta" href="#">Download ClockTiles on the App Store</a>
+  </div>
+</section>
+
+<footer>
+  <div class="links">
+    <a href="/privacy/">Privacy Policy</a>
+    <a href="mailto:support@clocktiles.com">Support</a>
+  </div>
+  <p>&copy; 2026 The Neural Contract Company Pty Ltd</p>
+</footer>
+
 </body>
 </html>
