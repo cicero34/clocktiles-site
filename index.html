@@ -72,6 +72,13 @@
     z-index:2;
     max-width:640px;
   }
+  .hero-logo{
+    display:block;
+    width:min(420px, 84%);
+    height:auto;
+    margin:0 auto 22px;
+    filter:drop-shadow(0 8px 22px rgba(0,0,0,0.45));
+  }
   .hero h1{
     font-size:clamp(1.9rem, 5vw, 3rem);
     line-height:1.14;
@@ -144,6 +151,13 @@
     line-height:1.65;
     color:var(--slate);
   }
+  section.copy ul.why{ margin:0; padding-left:1.15em; }
+  section.copy ul.why li{
+    font-size:1.18rem;
+    line-height:1.7;
+    color:var(--slate);
+    margin-bottom:.4em;
+  }
 
   /* ---- final CTA band ---- */
   .final-cta{
@@ -194,12 +208,13 @@
   </svg>
   <div class="hero-scrim"></div>
   <div class="hero-content">
+    <img class="hero-logo" src="logo.png" alt="ClockTiles">
     <h1>The five-minute word game that learns how you play</h1>
-    <p class="lede">Build a crossword from today's tiles before the clock runs out &mdash; against a Bot that adapts to your level as you play.</p>
-    <a class="cta" href="#">Download ClockTiles on the App Store</a>
+    <p class="lede">A fast-paced word game that combines the creativity of crosswords with the excitement of racing against the clock. Build intersecting words, collect more tiles as you go, and keep expanding your crossword &mdash; every second counts.</p>
+    <a class="cta" href="https://apps.apple.com/app/id6814369578">Download ClockTiles on the App Store</a>
     <p class="fine">Free daily puzzle &middot; iPhone</p>
     <div class="hero-shot">
-      <img src="/gameplay.png" alt="ClockTiles gameplay: a crossword-style board of drawn letter tiles, built outward from the anchor word with several intersecting words">
+      <img src="board.png" alt="A ClockTiles crossword board of letter tiles built outward into intersecting words such as CANOE, VOLUME and LITERARY.">
     </div>
   </div>
 </section>
@@ -221,15 +236,35 @@
 
 <section class="copy">
   <div class="container">
-    <h2>Take on more Bots with ClockTiles+</h2>
-    <p>Play beyond the free daily puzzle. Choose your difficulty, take on up to three Bots, and step up to longer, tougher games.</p>
+    <h2>Play your way with ClockTiles+</h2>
+    <p>Want a bigger challenge? Unlock unlimited games, choose your difficulty, and compete against up to three Bots in longer, tougher matches.</p>
+  </div>
+</section>
+
+<section class="copy">
+  <div class="container">
+    <h2>Climb the literary ladder</h2>
+    <p>Every victory brings you closer to the summit. Progress through fifteen great authors as you climb backwards through literary history.</p>
+  </div>
+</section>
+
+<section class="copy">
+  <div class="container">
+    <h2>Why play ClockTiles?</h2>
+    <ul class="why">
+      <li>A fresh, free word challenge every day</li>
+      <li>Fast, creative crossword-style gameplay</li>
+      <li>An adaptive Bot that grows with your skills</li>
+      <li>Extended challenges with ClockTiles+</li>
+      <li>No advertising or account required</li>
+    </ul>
   </div>
 </section>
 
 <section class="final-cta">
   <div class="container">
     <h2>Five minutes. One puzzle. A Bot at your level.</h2>
-    <a class="cta" href="#">Download ClockTiles on the App Store</a>
+    <a class="cta" href="https://apps.apple.com/app/id6814369578">Download ClockTiles on the App Store</a>
   </div>
 </section>
 
